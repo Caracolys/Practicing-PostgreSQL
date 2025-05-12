@@ -1,0 +1,4 @@
+SELECT temperature, count(mark) 
+FROM records 
+GROUP BY mark, temperature 
+ORDER BY mark;
