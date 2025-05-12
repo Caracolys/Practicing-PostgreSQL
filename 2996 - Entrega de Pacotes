@@ -1,0 +1,12 @@
+SELECT packages.year AS year, us1.name AS sender, us2.name AS receiver
+
+FROM packages
+
+INNER JOIN users us1 ON packages.id_user_sender = us1.id
+INNER JOIN users us2 ON packages.id_user_receiver = us2.id
+
+WHERE (packages.color ILIKE 'Blue' OR packages.year >= 2015)
+        AND us1.address NOT ILIKE 'Taiwan'
+        AND us2.address NOT ILIKE 'Taiwan'
+
+ORDER BY packages.year DESC, packages.id_package DESC;
