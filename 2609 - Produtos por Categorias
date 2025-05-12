@@ -1,0 +1,8 @@
+SELECT 
+    categories.name AS name, (
+        SELECT SUM(amount) 
+        FROM products 
+        WHERE products.id_categories = categories.id
+    ) AS sum
+FROM 
+    categories;
