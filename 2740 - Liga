@@ -1,0 +1,11 @@
+SELECT 
+    CASE 
+        WHEN position <= 3 THEN 'Podium: ' || team
+        ELSE 'Demoted: ' || team
+    END AS name
+FROM 
+    league
+WHERE
+    position <= 3 OR position >= (SELECT MAX(position) FROM league) - 1
+ORDER BY 
+    position;
